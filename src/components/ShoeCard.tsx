@@ -31,7 +31,8 @@ export default function ShoeCard({ shoe, selected = false, onToggle }: Props) {
           {shoe.usage}
         </span>
         <h3 className="font-display font-extrabold text-xl text-encre mt-2">{shoe.name}</h3>
-        <p className="text-sm text-encre/50 mb-4">{shoe.brand} · 2026</p>
+        <p className="text-sm text-encre/50 mb-1">{shoe.brand} · 2026</p>
+        <p className="text-sm text-encre/70 italic mb-4">{shoe.verdict}</p>
 
         <div className="flex gap-5 mb-4">
           <Spec label="Drop" value={`${shoe.drop} mm`} />

@@ -9,14 +9,16 @@ export interface Shoe {
   score: number;
   stack: number;
   amorti: "Ferme" | "Équilibré" | "Moelleux";
+  verdict: string;
 }
 
-// Données d'exemple — à terme alimentées par ton Google Sheet → JSON.
 export const shoes: Shoe[] = [
-  { id: "nova-glide-3", name: "Nova Glide 3", brand: "Aerys", usage: "route", drop: 8, weight: 245, price: 139, score: 8.9, stack: 36, amorti: "Équilibré" },
-  { id: "tempo-lite", name: "Tempo Lite", brand: "Aerys", usage: "route", drop: 6, weight: 210, price: 149, score: 8.7, stack: 30, amorti: "Ferme" },
-  { id: "summit-pro", name: "Summit Pro", brand: "Kestrel", usage: "trail", drop: 4, weight: 300, price: 175, score: 9.1, stack: 33, amorti: "Équilibré" },
-  { id: "trail-apex", name: "Trail Apex", brand: "Kestrel", usage: "trail", drop: 6, weight: 285, price: 159, score: 8.6, stack: 31, amorti: "Ferme" },
-  { id: "cloud-runner-x", name: "Cloudrunner X", brand: "Halo", usage: "route", drop: 10, weight: 260, price: 129, score: 8.2, stack: 38, amorti: "Moelleux" },
-  { id: "ridge-gtx", name: "Ridge GTX", brand: "Vata", usage: "trail", drop: 8, weight: 320, price: 169, score: 7.9, stack: 29, amorti: "Ferme" },
+  { id: "nike-pegasus-41", name: "Nike Pegasus 41", brand: "Nike", usage: "route", drop: 10, weight: 297, price: 140, score: 8.3, stack: 37, amorti: "Équilibré", verdict: "Le couteau suisse fiable : increvable et polyvalent." },
+  { id: "hoka-clifton-10", name: "Hoka Clifton 10", brand: "Hoka", usage: "route", drop: 8, weight: 278, price: 160, score: 8.4, stack: 42, amorti: "Moelleux", verdict: "Le canapé des sorties faciles : moelleuse, mais peu vive." },
+  { id: "asics-novablast-5", name: "Asics Novablast 5", brand: "Asics", usage: "route", drop: 8, weight: 255, price: 150, score: 8.7, stack: 41, amorti: "Moelleux", verdict: "Le plaisir au meilleur prix : légère et rebondie." },
+  { id: "saucony-endorphin-speed-4", name: "Saucony Endorphin Speed 4", brand: "Saucony", usage: "route", drop: 8, weight: 233, price: 180, score: 9.0, stack: 36, amorti: "Équilibré", verdict: "La polyvalente rapide : sortie longue ou séance, elle suit." },
+  { id: "hoka-speedgoat-6", name: "Hoka Speedgoat 6", brand: "Hoka", usage: "trail", drop: 5, weight: 280, price: 155, score: 8.6, stack: 40, amorti: "Moelleux", verdict: "La référence ultra : gros amorti, accroche Vibram." },
+  { id: "salomon-speedcross-6", name: "Salomon Speedcross 6", brand: "Salomon", usage: "trail", drop: 10, weight: 298, price: 150, score: 8.0, stack: 32, amorti: "Ferme", verdict: "La reine de la boue : crampons profonds, mais lourde." },
+  { id: "saucony-peregrine-15", name: "Saucony Peregrine 15", brand: "Saucony", usage: "trail", drop: 4, weight: 266, price: 140, score: 8.5, stack: 32, amorti: "Équilibré", verdict: "La nerveuse polyvalente : basse, agile et précise." },
+  { id: "la-sportiva-prodigio", name: "La Sportiva Prodigio", brand: "La Sportiva", usage: "trail", drop: 6, weight: 264, price: 155, score: 8.6, stack: 34, amorti: "Moelleux", verdict: "La douceur montagne : moderne et dynamique sur la longueur." },
 ];
