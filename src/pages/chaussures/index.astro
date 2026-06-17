@@ -15,7 +15,7 @@ const sorted = [...shoes].sort((a, b) => b.score - a.score);
 
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {sorted.map((shoe) => (
-        
+        <a
           href={"/chaussures/" + shoe.id}
           class="group block bg-white border border-encre/10 rounded-2xl p-5 hover:border-corail transition"
         >
