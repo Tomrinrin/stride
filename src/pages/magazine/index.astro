@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+const articles = (await getCollection("magazine")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<Base title="Magazine — Ma paire de running" description="Tests, conseils et guides running, sans le marketing.">
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <p class="font-display font-bold text-xs tracking-[0.18em] uppercase text-corail">Magazine</p>
+    <h1 class="font-display font-black text-4xl md:text-5xl text-encre mt-3 mb-3">
+      Tests, conseils & guides.
+    </h1>
+    <p class="text-encre/60 mb-10 max-w-xl">
+      Pour courir plus malin : on décrypte le matériel et on partage des conseils utiles, sans le marketing.
+    </p>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {articles.map((article, i) => <ArticleCard article={article} index={i} />)}
+    </div>
+  </section>
+</Base>

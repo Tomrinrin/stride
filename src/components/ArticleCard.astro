@@ -1,0 +1,35 @@
+---
+interface Props {
+  article: {
+    id: string;
+    data: { title: string; description: string; category: string; pubDate: Date };
+  };
+  index?: number;
+}
+const { article, index = 0 } = Astro.props;
+const blocks = ["bg-encre", "bg-bleu", "bg-corail"];
+const block = blocks[index % blocks.length];
+const date = article.data.pubDate.toLocaleDateString("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<a
+  href={`/magazine/${article.id}`}
+  class="group block bg-white border border-encre/10 rounded-2xl overflow-hidden hover:border-corail transition"
+>
+  <div class={`h-28 flex items-end p-4 ${block}`}>
+    <span class="text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-volt text-encre">
+      {article.data.category}
+    </span>
+  </div>
+  <div class="p-5">
+    <h3 class="font-display font-extrabold text-lg text-encre leading-snug group-hover:text-corail transition">
+      {article.data.title}
+    </h3>
+    <p class="text-sm text-encre/60 mt-2 line-clamp-2">{article.data.description}</p>
+    <div class="text-xs text-encre/40 mt-3">{date}</div>
+  </div>
+</a>

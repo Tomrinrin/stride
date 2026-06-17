@@ -17,3 +17,38 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
+
+/* Mise en forme du corps des articles du Magazine */
+.article-body {
+  font-size: 1.05rem;
+}
+.article-body h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin: 2rem 0 0.75rem;
+  color: var(--color-encre);
+}
+.article-body p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #2a2a2e;
+}
+.article-body ul {
+  list-style: disc;
+  padding-left: 1.3rem;
+  margin-bottom: 1rem;
+}
+.article-body li {
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+  color: #2a2a2e;
+}
+.article-body strong {
+  font-weight: 600;
+  color: var(--color-encre);
+}
+.article-body a {
+  color: var(--color-bleu);
+  text-decoration: underline;
+}
