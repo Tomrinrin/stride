@@ -5,8 +5,9 @@ interface Props {
     data: { title: string; description: string; category: string; pubDate: Date };
   };
   index?: number;
+  basePath?: string;
 }
-const { article, index = 0 } = Astro.props;
+const { article, index = 0, basePath = "/magazine" } = Astro.props;
 const blocks = ["bg-encre", "bg-bleu", "bg-corail"];
 const block = blocks[index % blocks.length];
 const date = article.data.pubDate.toLocaleDateString("fr-FR", {
@@ -17,7 +18,7 @@ const date = article.data.pubDate.toLocaleDateString("fr-FR", {
 ---
 
 <a
-  href={`/magazine/${article.id}`}
+  href={`${basePath}/${article.id}`}
   class="group block bg-white border border-encre/10 rounded-2xl overflow-hidden hover:border-corail transition"
 >
   <div class={`h-28 flex items-end p-4 ${block}`}>

@@ -1,0 +1,40 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const date = guide.data.pubDate.toLocaleDateString("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Base title={guide.data.title + " — Ma paire de running"} description={guide.data.description}>
+  <article class="mx-auto max-w-3xl px-5 py-16">
+    <a href="/guides" class="text-sm font-medium text-bleu hover:underline">← Tous les guides</a>
+
+    <div class="mt-6 mb-2">
+      <span class="text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-volt text-encre">
+        {guide.data.category}
+      </span>
+    </div>
+    <h1 class="font-display font-black text-3xl md:text-4xl text-encre leading-tight">
+      {guide.data.title}
+    </h1>
+    <div class="text-sm text-encre/40 mt-3 mb-8">{date}</div>
+
+    <div class="article-body">
+      <Content />
+    </div>
+  </article>
+</Base>

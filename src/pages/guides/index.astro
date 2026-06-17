@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+const guides = (await getCollection("guides")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<Base title="Guides — Ma paire de running" description="Nos sélections et comparatifs pour choisir la bonne paire, par usage et par budget.">
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <p class="font-display font-bold text-xs tracking-[0.18em] uppercase text-corail">Guides</p>
+    <h1 class="font-display font-black text-4xl md:text-5xl text-encre mt-3 mb-3">
+      Nos sélections.
+    </h1>
+    <p class="text-encre/60 mb-10 max-w-xl">
+      Les meilleures chaussures par usage et par budget, mises à jour régulièrement. Pour aller droit au bon modèle.
+    </p>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {guides.map((guide, i) => <ArticleCard article={guide} index={i} basePath="/guides" />)}
+    </div>
+  </section>
+</Base>
