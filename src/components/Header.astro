@@ -1,0 +1,30 @@
+---
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/comparateur", label: "Comparateur" },
+  { href: "#", label: "Magazine" },
+  { href: "#", label: "Chaussures" },
+  { href: "#", label: "Guides" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-blanc/90 backdrop-blur border-b border-encre/10">
+  <div class="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
+    <a href="/" class="font-display font-black text-2xl tracking-tight text-encre">
+      STRIDE<span class="text-corail">.</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+      {links.map((l) => (
+        <a href={l.href} class="text-encre/70 hover:text-corail transition-colors">{l.label}</a>
+      ))}
+    </nav>
+
+    <a
+      href="/comparateur"
+      class="font-display font-bold text-sm bg-corail text-white px-4 py-2 rounded-lg hover:opacity-90 transition"
+    >
+      Comparer
+    </a>
+  </div>
+</header>

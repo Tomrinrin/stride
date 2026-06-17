@@ -1,0 +1,67 @@
+---
+import Base from "../layouts/Base.astro";
+import ShoeCard from "../components/ShoeCard";
+import { shoes } from "../data/shoes";
+
+const featured = shoes.slice(0, 4);
+---
+
+<Base>
+  <section class="bg-encre">
+    <div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+      <p class="font-display font-bold text-xs tracking-[0.18em] uppercase text-corail">
+        Comparateur running
+      </p>
+      <h1 class="font-display font-black text-blanc text-5xl md:text-7xl leading-[0.95] tracking-tight mt-4">
+        Trouve<br />ta <span class="text-volt">foulée.</span>
+      </h1>
+      <p class="text-blanc/70 text-lg mt-6 max-w-xl">
+        Tests, specs et comparaisons côte à côte. La bonne chaussure, sans le marketing.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="/comparateur" class="font-display font-bold bg-corail text-white px-6 py-3 rounded-xl hover:opacity-90 transition">
+          Comparer les modèles
+        </a>
+        <a href="#tests" class="font-display font-bold text-blanc border border-blanc/30 px-6 py-3 rounded-xl hover:border-blanc transition">
+          Voir les tests
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tests" class="mx-auto max-w-6xl px-5 py-16">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="font-display font-extrabold text-3xl text-encre">Derniers tests</h2>
+      <a href="/comparateur" class="text-sm font-medium text-bleu hover:underline">Tout voir →</a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {featured.map((s) => <ShoeCard shoe={s} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5">
+    <div class="bg-volt rounded-3xl px-8 py-12 md:flex items-center justify-between gap-8">
+      <div>
+        <h2 class="font-display font-black text-3xl md:text-4xl text-encre">
+          Une sortie. Un test. Chaque semaine.
+        </h2>
+        <p class="text-encre/70 mt-2 max-w-md">
+          Reçois nos comparatifs et nos tests avant tout le monde. Zéro spam.
+        </p>
+      </div>
+      <form class="flex gap-2 mt-6 md:mt-0 shrink-0">
+        <input
+          type="email"
+          placeholder="ton@email.fr"
+          class="px-4 py-3 rounded-xl border border-encre/20 bg-white text-encre w-full md:w-64 outline-none focus:border-encre"
+        />
+        <button
+          type="submit"
+          class="font-display font-bold bg-encre text-volt px-5 py-3 rounded-xl hover:opacity-90 transition whitespace-nowrap"
+        >
+          Je m'inscris
+        </button>
+      </form>
+    </div>
+  </section>
+</Base>

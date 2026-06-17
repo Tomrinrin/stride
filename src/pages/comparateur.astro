@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import ComparateurTool from "../components/ComparateurTool";
+import { shoes } from "../data/shoes";
+---
+
+<Base title="Comparateur — Stride">
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <p class="font-display font-bold text-xs tracking-[0.18em] uppercase text-corail">Comparateur</p>
+    <h1 class="font-display font-black text-4xl md:text-5xl text-encre mt-3 mb-3">
+      Sélectionne. Compare. Choisis.
+    </h1>
+    <p class="text-encre/60 mb-8 max-w-xl">
+      Ajoute 2 à 4 chaussures au comparateur : on aligne leurs specs et on surligne la meilleure de chaque critère.
+    </p>
+    <ComparateurTool client:load shoes={shoes} />
+  </section>
+</Base>
