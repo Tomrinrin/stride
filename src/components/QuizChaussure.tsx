@@ -159,6 +159,13 @@ export default function QuizChaussure() {
                 (i === 0 ? "bg-encre border-encre" : "bg-white border-encre/10")
               }
             >
+              <div class="aspect-[16/9] bg-blanc rounded-xl overflow-hidden flex items-center justify-center mb-4">
+                <img
+                  src={shoe.image && shoe.image.length > 0 ? shoe.image : "/images/placeholder.svg"}
+                  alt={shoe.name}
+                  class="w-full h-full object-contain p-2"
+                />
+              </div>
               <div class="flex items-center justify-between gap-3">
                 <span
                   class={

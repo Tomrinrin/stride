@@ -19,6 +19,14 @@ const sorted = [...shoes].sort((a, b) => b.score - a.score);
           href={"/chaussures/" + shoe.id}
           class="group block bg-white border border-encre/10 rounded-2xl p-5 hover:border-corail transition"
         >
+          <div class="aspect-[16/9] bg-blanc rounded-xl overflow-hidden flex items-center justify-center mb-4">
+            <img
+              src={shoe.image && shoe.image.length > 0 ? shoe.image : "/images/placeholder.svg"}
+              alt={shoe.name}
+              loading="lazy"
+              class="w-full h-full object-contain p-2"
+            />
+          </div>
           <div class="flex items-center justify-between gap-3">
             <span class="text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-bleu text-white">
               {shoe.usage === "route" ? "Route" : "Trail"}

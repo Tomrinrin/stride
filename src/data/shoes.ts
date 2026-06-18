@@ -1,8 +1,11 @@
+import shoesData from "./shoes.json";
+
 export interface Shoe {
   id: string;
   name: string;
   brand: string;
   usage: "route" | "trail";
+  image?: string;
   drop: number;
   weight: number;
   price: number;
@@ -12,13 +15,4 @@ export interface Shoe {
   verdict: string;
 }
 
-export const shoes: Shoe[] = [
-  { id: "nike-pegasus-41", name: "Nike Pegasus 41", brand: "Nike", usage: "route", drop: 10, weight: 297, price: 140, score: 8.3, stack: 37, amorti: "Équilibré", verdict: "Le couteau suisse fiable : increvable et polyvalent." },
-  { id: "hoka-clifton-10", name: "Hoka Clifton 10", brand: "Hoka", usage: "route", drop: 8, weight: 278, price: 160, score: 8.4, stack: 42, amorti: "Moelleux", verdict: "Le canapé des sorties faciles : moelleuse, mais peu vive." },
-  { id: "asics-novablast-5", name: "Asics Novablast 5", brand: "Asics", usage: "route", drop: 8, weight: 255, price: 150, score: 8.7, stack: 41, amorti: "Moelleux", verdict: "Le plaisir au meilleur prix : légère et rebondie." },
-  { id: "saucony-endorphin-speed-4", name: "Saucony Endorphin Speed 4", brand: "Saucony", usage: "route", drop: 8, weight: 233, price: 180, score: 9.0, stack: 36, amorti: "Équilibré", verdict: "La polyvalente rapide : sortie longue ou séance, elle suit." },
-  { id: "hoka-speedgoat-6", name: "Hoka Speedgoat 6", brand: "Hoka", usage: "trail", drop: 5, weight: 280, price: 155, score: 8.6, stack: 40, amorti: "Moelleux", verdict: "La référence ultra : gros amorti, accroche Vibram." },
-  { id: "salomon-speedcross-6", name: "Salomon Speedcross 6", brand: "Salomon", usage: "trail", drop: 10, weight: 298, price: 150, score: 8.0, stack: 32, amorti: "Ferme", verdict: "La reine de la boue : crampons profonds, mais lourde." },
-  { id: "saucony-peregrine-15", name: "Saucony Peregrine 15", brand: "Saucony", usage: "trail", drop: 4, weight: 266, price: 140, score: 8.5, stack: 32, amorti: "Équilibré", verdict: "La nerveuse polyvalente : basse, agile et précise." },
-  { id: "la-sportiva-prodigio", name: "La Sportiva Prodigio", brand: "La Sportiva", usage: "trail", drop: 6, weight: 264, price: 155, score: 8.6, stack: 34, amorti: "Moelleux", verdict: "La douceur montagne : moderne et dynamique sur la longueur." },
-];
+export const shoes: Shoe[] = shoesData as Shoe[];
