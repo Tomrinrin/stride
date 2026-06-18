@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Contact — Ma paire de running" description="Une question, une suggestion, une chaussure à comparer ? Écris-nous.">
+  <section class="mx-auto max-w-2xl px-5 py-16">
+    <p class="font-display font-bold text-xs tracking-[0.18em] uppercase text-corail">Contact</p>
+    <h1 class="font-display font-black text-4xl md:text-5xl text-encre mt-3 mb-3">On t'écoute.</h1>
+    <p class="text-encre/60 mb-10 max-w-md">
+      Une question, une suggestion, une chaussure que tu aimerais voir comparée ? Laisse-nous un mot.
+    </p>
+
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/message-envoye/"
+      class="space-y-5"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden><label>Ne pas remplir : <input name="bot-field" /></label></p>
+
+      <div>
+        <label for="name" class="block text-sm font-medium text-encre mb-1.5">Nom</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          class="w-full rounded-xl border border-encre/15 bg-white px-4 py-3 text-encre focus:border-corail focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-encre mb-1.5">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          class="w-full rounded-xl border border-encre/15 bg-white px-4 py-3 text-encre focus:border-corail focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-encre mb-1.5">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class="w-full rounded-xl border border-encre/15 bg-white px-4 py-3 text-encre focus:border-corail focus:outline-none resize-y"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="font-display font-bold bg-corail text-white px-6 py-3 rounded-xl hover:opacity-90 transition"
+      >
+        Envoyer
+      </button>
+    </form>
+  </section>
+</Base>
