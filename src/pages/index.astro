@@ -5,7 +5,10 @@ import ArticleCard from "../components/ArticleCard.astro";
 import { shoes } from "../data/shoes";
 import { getCollection } from "astro:content";
 
-const featured = shoes.slice(0, 4);
+const byScore = (a, b) => b.score - a.score;
+const topRoute = [...shoes].filter((s) => s.usage === "route").sort(byScore).slice(0, 3);
+const topTrail = [...shoes].filter((s) => s.usage === "trail").sort(byScore).slice(0, 3);
+const featured = [topRoute[0], topTrail[0], topRoute[1], topTrail[1], topRoute[2], topTrail[2]].filter(Boolean);
 const latestArticles = (await getCollection("magazine"))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
@@ -36,7 +39,7 @@ const latestArticles = (await getCollection("magazine"))
 
   <section id="tests" class="mx-auto max-w-6xl px-5 py-16">
     <div class="flex items-end justify-between mb-8">
-      <h2 class="font-display font-extrabold text-3xl text-encre">Derniers tests</h2>
+      <h2 class="font-display font-extrabold text-3xl text-encre">À la une</h2>
       <a href="/comparateur" class="text-sm font-medium text-bleu hover:underline">Tout voir →</a>
     </div>
     <div class="grid gap-4 sm:grid-cols-2">
