@@ -112,3 +112,22 @@ content:
       - name: verdict
         label: Verdict (résumé)
         type: text
+      - name: affiliateUrl
+        label: Lien d'achat (affiliation)
+        type: string
+      - name: pronation
+        label: Pronation
+        type: select
+        options:
+          values: [Universelle, Pronateur, Supinateur]
+      - name: largeur
+        label: Largeur
+        type: select
+        options:
+          values: [Standard, Large]
+      - name: plaqueCarbone
+        label: Plaque carbone
+        type: boolean
+      - name: impermeable
+        label: Imperméable / Gore-Tex
+        type: boolean
