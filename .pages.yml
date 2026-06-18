@@ -1,3 +1,11 @@
+media:
+  - name: images
+    label: Images
+    input: public/images
+    output: /images
+    categories: [image]
+    rename: safe
+
 content:
   - name: magazine
     label: Magazine
@@ -51,3 +59,56 @@ content:
       - name: body
         label: Contenu du guide
         type: rich-text
+  - name: chaussures
+    label: Chaussures
+    type: file
+    path: src/data/shoes.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: Identifiant (slug URL, ex. nike-pegasus-41)
+        type: string
+        required: true
+      - name: name
+        label: Nom du modèle
+        type: string
+        required: true
+      - name: brand
+        label: Marque
+        type: string
+        required: true
+      - name: usage
+        label: Usage
+        type: select
+        options:
+          values: [route, trail]
+      - name: image
+        label: Photo
+        type: image
+        options:
+          media: images
+          path: public/images/chaussures
+      - name: drop
+        label: Drop (mm)
+        type: number
+      - name: weight
+        label: Poids (g)
+        type: number
+      - name: stack
+        label: Stack (mm)
+        type: number
+      - name: price
+        label: Prix (€)
+        type: number
+      - name: score
+        label: Note (sur 10)
+        type: number
+      - name: amorti
+        label: Amorti
+        type: select
+        options:
+          values: [Ferme, Équilibré, Moelleux]
+      - name: verdict
+        label: Verdict (résumé)
+        type: text
