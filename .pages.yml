@@ -1,0 +1,53 @@
+content:
+  - name: magazine
+    label: Magazine
+    type: collection
+    path: src/content/magazine
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: description
+        label: Accroche (résumé court)
+        type: text
+        required: true
+      - name: category
+        label: Catégorie
+        type: string
+        default: Guide
+      - name: pubDate
+        label: Date de publication
+        type: date
+        required: true
+      - name: body
+        label: Contenu de l'article
+        type: rich-text
+  - name: guides
+    label: Guides
+    type: collection
+    path: src/content/guides
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: description
+        label: Accroche (résumé court)
+        type: text
+        required: true
+      - name: category
+        label: Catégorie
+        type: string
+        default: Guide
+      - name: pubDate
+        label: Date de publication
+        type: date
+        required: true
+      - name: body
+        label: Contenu du guide
+        type: rich-text
