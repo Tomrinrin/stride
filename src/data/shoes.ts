@@ -13,6 +13,11 @@ export interface Shoe {
   stack: number;
   amorti: "Ferme" | "Équilibré" | "Moelleux";
   verdict: string;
+  affiliateUrl?: string;
+  pronation?: string;
+  plaqueCarbone?: boolean;
+  impermeable?: boolean;
+  largeur?: string;
 }
 
 export const shoes: Shoe[] = shoesData as Shoe[];

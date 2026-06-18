@@ -20,6 +20,10 @@ const specs = [
   { label: "Amorti", value: shoe.amorti },
   { label: "Prix indicatif", value: shoe.price + " €" },
 ];
+if (shoe.pronation) specs.push({ label: "Pronation", value: shoe.pronation });
+if (shoe.largeur) specs.push({ label: "Largeur", value: shoe.largeur });
+if (shoe.plaqueCarbone) specs.push({ label: "Plaque carbone", value: "Oui" });
+if (shoe.impermeable) specs.push({ label: "Imperméable", value: "Oui" });
 
 const pageTitle = shoe.name + " — Ma paire de running";
 ---
@@ -50,6 +54,22 @@ const pageTitle = shoe.name + " — Ma paire de running";
     </div>
 
     <p class="text-lg text-encre/70 mt-5 leading-relaxed">{shoe.verdict}</p>
+
+    {shoe.affiliateUrl && (
+      <div class="mt-6">
+        <a
+          href={shoe.affiliateUrl}
+          target="_blank"
+          rel="nofollow sponsored noopener"
+          class="inline-flex items-center gap-2 font-display font-bold bg-corail text-white px-6 py-3 rounded-xl hover:opacity-90 transition"
+        >
+          Où l'acheter →
+        </a>
+        <p class="text-[11px] text-encre/40 mt-2">
+          Lien partenaire — on peut toucher une commission, sans surcoût pour toi.
+        </p>
+      </div>
+    )}
 
     <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-3">
       {specs.map((s) => (
