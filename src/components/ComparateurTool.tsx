@@ -91,9 +91,20 @@ function ComparisonTable({
 
 export default function ComparateurTool({ shoes }: { shoes: Shoe[] }) {
   const [filter, setFilter] = useState<string>("tout");
+  const [brand, setBrand] = useState<string>("toutes");
+  const [sort, setSort] = useState<string>("note");
   const [selected, setSelected] = useState<string[]>([]);
 
-  const pool = filter === "tout" ? shoes : shoes.filter((s) => s.usage === filter);
+  const brands = Array.from(new Set(shoes.map((s) => s.brand))).sort((a, b) => a.localeCompare(b));
+
+  const pool = shoes
+    .filter((s) => (filter === "tout" || s.usage === filter) && (brand === "toutes" || s.brand === brand))
+    .sort((a, b) => {
+      if (sort === "prix-asc") return a.price - b.price;
+      if (sort === "prix-desc") return b.price - a.price;
+      if (sort === "poids") return a.weight - b.weight;
+      return b.score - a.score;
+    });
   const chosen = shoes.filter((s) => selected.includes(s.id));
 
   const toggle = (id: string) =>
@@ -130,6 +141,28 @@ export default function ComparateurTool({ shoes }: { shoes: Shoe[] }) {
             {o.label}
           </button>
         ))}
+        <select
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+          className="rounded-full border border-encre/15 bg-white px-4 py-2 text-sm text-encre focus:border-corail focus:outline-none"
+        >
+          <option value="toutes">Toutes les marques</option>
+          {brands.map((b) => (
+            <option key={b} value={b}>
+              {b}
+            </option>
+          ))}
+        </select>
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className="rounded-full border border-encre/15 bg-white px-4 py-2 text-sm text-encre focus:border-corail focus:outline-none"
+        >
+          <option value="note">Meilleure note</option>
+          <option value="prix-asc">Prix croissant</option>
+          <option value="prix-desc">Prix décroissant</option>
+          <option value="poids">Plus légères</option>
+        </select>
         <span className="ml-auto text-sm text-encre/50">{selected.length}/{MAX} sélectionnées</span>
       </div>
 

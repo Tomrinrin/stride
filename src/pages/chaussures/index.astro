@@ -1,50 +1,17 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { shoes } from "../../data/shoes";
-
-const sorted = [...shoes].sort((a, b) => b.score - a.score);
+import CatalogueChaussures from "../../components/CatalogueChaussures";
 ---
 
-<Base title="Chaussures — Ma paire de running" description="Toutes nos fiches chaussures : specs, notes et verdicts.">
+<Base title="Chaussures — Ma paire de running" description="Toutes nos fiches chaussures : filtre par marque, par usage, et tri par note, prix ou poids.">
   <section class="mx-auto max-w-6xl px-5 py-16">
     <p class="font-display font-bold text-xs tracking-[0.18em] uppercase text-corail">Chaussures</p>
     <h1 class="font-display font-black text-4xl md:text-5xl text-encre mt-3 mb-3">Toutes nos fiches.</h1>
     <p class="text-encre/60 mb-10 max-w-xl">
-      Specs, notes et verdicts pour chaque modèle testé. Clique sur une chaussure pour voir sa fiche complète.
+      Filtre par marque ou par usage, trie par note, prix ou poids. Clique sur une chaussure pour voir sa fiche complète.
     </p>
 
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map((shoe) => (
-        <a
-          href={"/chaussures/" + shoe.id}
-          class="group block bg-white border border-encre/10 rounded-2xl p-5 hover:border-corail transition"
-        >
-          <div class="aspect-[16/9] bg-blanc rounded-xl overflow-hidden flex items-center justify-center mb-4">
-            <img
-              src={shoe.image && shoe.image.length > 0 ? shoe.image : "/images/placeholder.svg"}
-              alt={shoe.name}
-              loading="lazy"
-              class="w-full h-full object-contain p-2"
-            />
-          </div>
-          <div class="flex items-center justify-between gap-3">
-            <span class="text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-bleu text-white">
-              {shoe.usage === "route" ? "Route" : "Trail"}
-            </span>
-            <span class="font-display font-black text-lg text-encre bg-volt rounded-lg px-2.5 py-0.5">
-              {shoe.score}
-            </span>
-          </div>
-          <h2 class="font-display font-extrabold text-lg text-encre mt-3 group-hover:text-corail transition">
-            {shoe.name}
-          </h2>
-          <p class="text-sm text-encre/50 mt-1">{shoe.brand}</p>
-          <p class="text-sm text-encre/60 mt-3 line-clamp-2">{shoe.verdict}</p>
-          <div class="text-xs text-encre/40 mt-4">
-            {shoe.weight} g · drop {shoe.drop} mm · {shoe.price} €
-          </div>
-        </a>
-      ))}
-    </div>
+    <CatalogueChaussures client:load shoes={shoes} />
   </section>
 </Base>
