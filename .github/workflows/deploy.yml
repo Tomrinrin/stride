@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: ./public_html/
-          state-name: deploy-state-neuf.json
+          state-name: deploy-v3.json
           exclude: |
             **/.git*
             **/.git*/**
