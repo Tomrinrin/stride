@@ -23,9 +23,18 @@ export default function ShoeCard({ shoe, selected = false, onToggle }: Props) {
         selected ? "border-corail ring-1 ring-corail" : "border-encre/10"
       }`}
     >
-      <div className="aspect-[16/9] bg-blanc rounded-xl mb-4 overflow-hidden flex items-center justify-center">
-        <img src={img} alt={shoe.name} loading="lazy" className="w-full h-full object-contain p-2" />
-      </div>
+      <a
+        href={"/chaussures/" + shoe.id}
+        aria-label={"Voir la fiche " + shoe.name}
+        className="aspect-[16/9] bg-blanc rounded-xl mb-4 overflow-hidden flex items-center justify-center group cursor-pointer"
+      >
+        <img
+          src={img}
+          alt={shoe.name}
+          loading="lazy"
+          className="w-full h-full object-contain p-2 transition-transform duration-200 group-hover:scale-105"
+        />
+      </a>
 
       <div className="flex justify-between items-start gap-4">
         <div className="min-w-0">
