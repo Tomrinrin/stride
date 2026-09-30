@@ -32,6 +32,7 @@ export default function ShoeCard({ shoe, selected = false, onToggle }: Props) {
           src={img}
           alt={shoe.name}
           loading="lazy"
+          referrerPolicy="no-referrer"
           className="w-full h-full object-contain p-2 transition-transform duration-200 group-hover:scale-105"
         />
       </a>

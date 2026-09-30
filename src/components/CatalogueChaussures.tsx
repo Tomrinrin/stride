@@ -90,6 +90,7 @@ export default function CatalogueChaussures({ shoes }: { shoes: Shoe[] }) {
                   src={shoe.image && shoe.image.length > 0 ? shoe.image : "/images/placeholder.svg"}
                   alt={shoe.name}
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-contain p-2"
                 />
               </div>

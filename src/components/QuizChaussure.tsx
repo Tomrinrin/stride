@@ -163,6 +163,7 @@ export default function QuizChaussure() {
                 <img
                   src={shoe.image && shoe.image.length > 0 ? shoe.image : "/images/placeholder.svg"}
                   alt={shoe.name}
+                  referrerpolicy="no-referrer"
                   class="w-full h-full object-contain p-2"
                 />
               </div>
