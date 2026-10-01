@@ -37,7 +37,7 @@ jobs:
                   return ('LINK' if 'linksynergy' in d else 'nolink', len(d))
               except Exception as e: return ('ERR',str(e)[:40])
           print("### index.html check")
-          for path in ['/public_html/index.html','/domains/mapairederunning.fr/public_html/index.html','/htdocs/index.html']:
+          for path in ['/domains/mapairederunning.fr/public_html/chaussures/kiprun-kipstorm-elite/index.html','/domains/mapairederunning.fr/public_html/chaussures/hoka-speedgoat-7/index.html']:
               print("   ",path,"->",chk(path))
           ftp.quit()
           PY
