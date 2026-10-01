@@ -1,7 +1,0 @@
-=== LIEN 1 (Elite, format /link) ===
-http=400 final=https://click.linksynergy.com/link?id=JcfqIiZcOMQ&offerid=2079203.4480616900110855890720107&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-running-avec-plaque-carbone-homme-kiprun-kd900x-ld-orange%2f353062%2fc125c345m8931231
-=== LIEN 2 (Kipcore, format /deeplink) ===
-http=400 final=https://click.linksynergy.com/deeplink?id=JcfqIiZcOMQ&mid=44806&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-running-homme-kiprun-kipcore%2F_%2FR-p-353286
-=== chaine redirection Lien1 ===
-302 -> https://www.decathlon.fr/p/chaussures-running-avec-plaque-carbone-homme-kiprun-kd900x-ld-orange/353062/c125c345m8931231?ranMID=44806&ranEAID=JcfqIiZcOMQ&utm_source=rakutenadvertising&utm_medium=affiliate&utm_campaign=fr_t-perf_n-Ma+paire+de+Running-4724780_260120-aw_f-cv_&utm_content=Running%2FTrail%2FJogging&ranSiteID=JcfqIiZcOMQ-xtrDYQI5QqPvKMQ8Bl58Pg&PublisherGroup=Running%2FTrail%2FJogging
-__END__
