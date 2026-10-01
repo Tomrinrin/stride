@@ -1,0 +1,11 @@
+# Desactive le cache LiteSpeed pour tout le site
+<IfModule LiteSpeed>
+CacheDisable public /
+</IfModule>
+
+# Pas de cache navigateur/CDN pour les pages HTML (toujours la derniere version)
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
