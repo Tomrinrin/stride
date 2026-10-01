@@ -1,0 +1,36 @@
+name: Diag FTP
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/diag.yml']
+permissions:
+  contents: write
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test public
+        continue-on-error: true
+        run: |
+          {
+          echo "=== HEADERS fiche Elite (en direct public) ==="
+          curl -s -D - -o /tmp/p.html -A "Mozilla/5.0" "https://mapairederunning.fr/chaussures/kiprun-kipstorm-elite/?t=$(date +%s)"
+          echo ""
+          echo "=== linksynergy dans la reponse publique ? ==="
+          grep -c linksynergy /tmp/p.html || true
+          echo "taille: $(wc -c </tmp/p.html) octets"
+          echo "=== test www ==="
+          curl -s -D - -o /tmp/w.html -A "Mozilla/5.0" "https://www.mapairederunning.fr/chaussures/kiprun-kipstorm-elite/?t=$(date +%s)" | grep -iE "^(x-|cf-|server|cache|age)" || true
+          echo "www linksynergy: $(grep -c linksynergy /tmp/w.html || true)"
+          } > diag-output.txt 2>&1
+          echo __END__ >> diag-output.txt
+      - name: Push
+        if: always()
+        env: {GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"}
+        run: |
+          git config user.name d; git config user.email d@d
+          git add -f diag-output.txt; git commit -m diag || echo none
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/Tomrinrin/stride.git"
+          git push origin HEAD:main || echo pushfail
