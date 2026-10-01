@@ -1,0 +1,24 @@
+=== HEADERS fiche Elite (en direct public) ===
+HTTP/2 200 
+content-type: text/html
+last-modified: Thu, 01 Oct 2026 12:47:35 GMT
+etag: "396c-6abe5667-5fc0606f3c4338c1;;;"
+accept-ranges: bytes
+content-length: 14700
+date: Thu, 01 Oct 2026 12:50:15 GMT
+server: LiteSpeed
+platform: hostinger
+panel: hpanel
+content-security-policy: upgrade-insecure-requests
+cache-control: no-cache, max-age=0, must-revalidate
+alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000
+
+
+=== linksynergy dans la reponse publique ? ===
+1
+taille: 14700 octets
+=== test www ===
+server: LiteSpeed
+cache-control: no-cache, max-age=0, must-revalidate
+www linksynergy: 1
+__END__
