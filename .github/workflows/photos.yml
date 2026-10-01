@@ -11,35 +11,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Telecharge photos
+      - name: Telecharge photos depuis le CDN
         continue-on-error: true
         run: |
           python3 - << 'PY' > photos-log.txt 2>&1
-          import json, os, re, subprocess, urllib.parse
-          d=json.load(open('src/data/shoes.json'))
-          os.makedirs('public/images/chaussures', exist_ok=True)
-          ok=0
-          for s in d:
-              aff=s.get('affiliateUrl')
-              if not aff: continue
-              page=urllib.parse.parse_qs(urllib.parse.urlparse(aff).query).get('murl',[None])[0]
-              if not page: print("no murl",s['id']); continue
-              try:
-                  html=subprocess.run(['curl','-sL','-A','Mozilla/5.0',page],capture_output=True,text=True,timeout=45).stdout
-                  m=re.search(r'https://contents\.mediadecathlon\.com/p\d+/[^"\'\s\\]+?\.jpg', html)
-                  if not m: print("no img url",s['id'],"(html",len(html),"o)"); continue
-                  img=m.group(0)+'?f=800x0'
-                  dest='public/images/chaussures/'+s['id']+'.jpg'
-                  subprocess.run(['curl','-sL','-A','Mozilla/5.0','-o',dest,img],timeout=45)
-                  sz=os.path.getsize(dest) if os.path.exists(dest) else 0
-                  if sz>3000:
-                      s['image']='/images/chaussures/'+s['id']+'.jpg'; ok+=1; print("OK",s['id'],sz,"o")
-                  else:
-                      print("dl echoue",s['id'],sz,"o")
-                      if os.path.exists(dest): os.remove(dest)
-              except Exception as e: print("ERR",s['id'],str(e)[:50])
+          import json, os, subprocess
+          IMG={
+           "kiprun-kipcore":"https://contents.mediadecathlon.com/p3030955/k$20b915c03f563b80ee29a916c2fcd0d1/picture.jpg",
+           "kiprun-jogflow":"https://contents.mediadecathlon.com/p3064175/k$ab7a0e3934f10955df3419ab0f7e1376/picture.jpg",
+           "kiprun-kipride":"https://contents.mediadecathlon.com/p3159333/k$2a034ee23c654248ae3be348d4c43db0/picture.jpg",
+           "kiprun-kipride-max":"https://contents.mediadecathlon.com/p3159564/k$bb3d123690ffb7e5c9fc6ec4f283b747/picture.jpg",
+           "kiprun-kipstorm-tempo":"https://contents.mediadecathlon.com/p3159779/k$3a179d8c4135971b13b5185132de9148/picture.jpg",
+           "kiprun-kipstorm-elite":"https://contents.mediadecathlon.com/p3159661/k$7da7ccaad17576c54fb9c0b9ef02cf69/picture.jpg",
+           "kiprun-kipstorm-lab":"https://contents.mediadecathlon.com/p2949890/k$947433da3186755d77784898081cf776/picture.jpg",
+           "kiprun-kipsummit":"https://contents.mediadecathlon.com/p3053865/k$a64c1190294fd099b091ee179d31936f/picture.jpg",
+           "hoka-speedgoat-7":"https://contents.mediadecathlon.com/p3171295/k$37364a48cb5b5de55a4038fd914165fd/picture.jpg",
+           "hoka-mafate-5":"https://contents.mediadecathlon.com/p3181532/k$baf188209c6c873047340b79b3cdba3c/picture.jpg",
+           "asics-gel-nimbus-28":"https://contents.mediadecathlon.com/p3067246/k$ca18415ca98f098138c4e85b11733259/picture.jpg",
+           "asics-gel-trabuco-14":"https://contents.mediadecathlon.com/p3171350/k$c7337cd197de85f458960408347c2d73/picture.jpg",
+           "brooks-ghost-18":"https://contents.mediadecathlon.com/p3171663/k$51803c0153c490ee7390abc305405ff8/picture.jpg",
+           "saucony-peregrine-16":"https://contents.mediadecathlon.com/p3171050/k$1b4fd83b6d801575bc827917052c5c31/picture.jpg",
+           "nb-1080-v15":"https://contents.mediadecathlon.com/p3171755/k$e82496fc05166b3283e223d09ab9ec5c/picture.jpg",
+           "nb-hierro-v9":"https://contents.mediadecathlon.com/p3181173/k$45f74efbbed9d690f18c4bbaaec6e754/picture.jpg",
+           "brooks-glycerin-22":"https://contents.mediadecathlon.com/p3024368/k$70615b3e3d2fda8c266e63e137461234/picture.jpg",
+           "brooks-cascadia-19":"https://contents.mediadecathlon.com/p3077995/k$3a8a3d6989f0164672bdd8689cb3f2c3/picture.jpg",
+          }
+          d=json.load(open('src/data/shoes.json')); os.makedirs('public/images/chaussures',exist_ok=True)
+          byid={s['id']:s for s in d}; ok=0
+          for sid,url in IMG.items():
+              dest='public/images/chaussures/'+sid+'.jpg'
+              subprocess.run(['curl','-sL','-A','Mozilla/5.0','-o',dest,url+'?f=800x0'],timeout=45)
+              sz=os.path.getsize(dest) if os.path.exists(dest) else 0
+              if sz>3000:
+                  byid[sid]['image']='/images/chaussures/'+sid+'.jpg'; ok+=1; print("OK",sid,sz)
+              else:
+                  print("ECHEC",sid,sz)
+                  if os.path.exists(dest): os.remove(dest)
           json.dump(d,open('src/data/shoes.json','w'),ensure_ascii=False,indent=2)
-          print("TOTAL:",ok)
+          print("TOTAL",ok)
           PY
           echo __END__ >> photos-log.txt
       - name: Commit
