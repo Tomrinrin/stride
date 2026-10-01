@@ -1,23 +1,20 @@
-no img url hoka-clifton-10 (html 5645 o)
-no img url asics-novablast-5 (html 5663 o)
-no img url hoka-speedgoat-7 (html 5726 o)
-no img url saucony-peregrine-16 (html 5735 o)
-no img url brooks-ghost-18 (html 5702 o)
-no img url nb-1080-v15 (html 5648 o)
-no img url asics-gel-nimbus-28 (html 5636 o)
-no img url hoka-mafate-5 (html 5657 o)
-no img url nb-hierro-v9 (html 5762 o)
-no img url asics-gel-trabuco-14 (html 5699 o)
-no img url saucony-triumph-23 (html 5726 o)
-no img url brooks-glycerin-22 (html 5645 o)
-no img url brooks-cascadia-19 (html 5693 o)
-no img url kiprun-kipcore (html 5642 o)
-no img url kiprun-jogflow (html 5563 o)
-no img url kiprun-kipride (html 5660 o)
-no img url kiprun-kipride-max (html 5693 o)
-no img url kiprun-kipstorm-tempo (html 5702 o)
-no img url kiprun-kipstorm-elite (html 5723 o)
-no img url kiprun-kipstorm-lab (html 5738 o)
-no img url kiprun-kipsummit (html 5705 o)
-TOTAL: 0
+OK kiprun-kipcore 24013
+OK kiprun-jogflow 22486
+ECHEC kiprun-kipride 259
+OK kiprun-kipride-max 24320
+OK kiprun-kipstorm-tempo 26956
+OK kiprun-kipstorm-elite 26349
+OK kiprun-kipstorm-lab 21145
+OK kiprun-kipsummit 27133
+OK hoka-speedgoat-7 32592
+OK hoka-mafate-5 36488
+OK asics-gel-nimbus-28 30633
+OK asics-gel-trabuco-14 35220
+OK brooks-ghost-18 23344
+OK saucony-peregrine-16 31674
+OK nb-1080-v15 23186
+OK nb-hierro-v9 36261
+OK brooks-glycerin-22 29325
+OK brooks-cascadia-19 37203
+TOTAL 17
 __END__
