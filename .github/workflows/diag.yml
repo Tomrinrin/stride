@@ -5,45 +5,44 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/diag.yml'
+permissions:
+  contents: write
 jobs:
   diag:
     runs-on: ubuntu-latest
     steps:
-      - name: Sonde FTP (trouver le vrai dossier du site)
+      - uses: actions/checkout@v4
+      - name: Sonde FTP
         env:
           S: ${{ secrets.FTP_SERVER }}
           U: ${{ secrets.FTP_USERNAME }}
           P: ${{ secrets.FTP_PASSWORD }}
         run: |
-          python3 - << 'PY'
+          python3 - << 'PY' > diag-output.txt 2>&1
           import ftplib, os
-          ftp=ftplib.FTP(os.environ['S'], timeout=40)
-          ftp.login(os.environ['U'], os.environ['P'])
+          ftp=ftplib.FTP(os.environ['S'], timeout=40); ftp.login(os.environ['U'], os.environ['P'])
           print("ROOT FTP =", ftp.pwd())
           def ls(p):
+              out=[]
               try:
-                  out=[]
-                  ftp.retrlines('LIST '+p, out.append)
-                  print("=== LIST", p, "===")
-                  for l in out: print("   ", l)
-              except Exception as e:
-                  print("=== LIST", p, "-> ERREUR:", e)
-          for p in ['/', '/public_html', '/domains', '/domains/mapairederunning.fr',
-                    '/domains/mapairederunning.fr/public_html']:
+                  ftp.retrlines('LIST '+p, out.append); print("=== LIST",p,"==="); [print("  ",l) for l in out]
+              except Exception as e: print("=== LIST",p,"-> ERR:",e)
+          for p in ['/','/public_html','/domains','/domains/mapairederunning.fr','/domains/mapairederunning.fr/public_html']:
               ls(p)
-          def has_link(path):
+          def chk(path):
               try:
-                  buf=[]
-                  ftp.retrbinary('RETR '+path, buf.append, blocksize=65536)
-                  data=b''.join(buf).decode('utf-8','ignore')
-                  return ('linksynergy' in data, len(data))
-              except Exception as e:
-                  return ('ERR:'+str(e), 0)
-          print("=== CONTENU index.html par dossier (linksynergy? , taille) ===")
-          for path in ['/public_html/index.html',
-                       '/domains/mapairederunning.fr/public_html/index.html',
-                       '/public_html/chaussures/kiprun-kipstorm-elite/index.html',
-                       '/domains/mapairederunning.fr/public_html/chaussures/kiprun-kipstorm-elite/index.html']:
-              print("  ", path, "->", has_link(path))
+                  buf=[]; ftp.retrbinary('RETR '+path, buf.append); d=b''.join(buf).decode('utf-8','ignore')
+                  return ('linksynergy' in d, len(d))
+              except Exception as e: return ('ERR:'+str(e),0)
+          print("=== index.html (linksynergy?, taille) ===")
+          for path in ['/public_html/index.html','/domains/mapairederunning.fr/public_html/index.html']:
+              print("  ",path,"->",chk(path))
           ftp.quit()
           PY
+          echo "---- exit ----" >> diag-output.txt
+      - name: Push result
+        run: |
+          git config user.name "diag"; git config user.email "diag@local"
+          git add diag-output.txt
+          git commit -m "diag output" || echo "nochange"
+          git push
