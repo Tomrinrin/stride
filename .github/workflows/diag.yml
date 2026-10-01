@@ -1,0 +1,35 @@
+name: Diag FTP
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/diag.yml']
+permissions:
+  contents: write
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test liens affiliation
+        continue-on-error: true
+        run: |
+          {
+          L1="https://click.linksynergy.com/link?id=JcfqIiZcOMQ&offerid=2079203.4480616900110855890720107&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-running-avec-plaque-carbone-homme-kiprun-kd900x-ld-orange%2f353062%2fc125c345m8931231"
+          L2="https://click.linksynergy.com/deeplink?id=JcfqIiZcOMQ&mid=44806&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-running-homme-kiprun-kipcore%2F_%2FR-p-353286"
+          echo "=== LIEN 1 (Elite, format /link) ==="
+          curl -s -o /dev/null -w "http=%{http_code} final=%{url_effective}\n" -IL -A "Mozilla/5.0" "$L1"
+          echo "=== LIEN 2 (Kipcore, format /deeplink) ==="
+          curl -s -o /dev/null -w "http=%{http_code} final=%{url_effective}\n" -IL -A "Mozilla/5.0" "$L2"
+          echo "=== chaine redirection Lien1 ==="
+          curl -s -o /dev/null -w "%{http_code} -> %{redirect_url}\n" -A "Mozilla/5.0" "$L1"
+          } > diag-output.txt 2>&1
+          echo __END__ >> diag-output.txt
+      - name: Push
+        if: always()
+        env: {GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"}
+        run: |
+          git config user.name d; git config user.email d@d
+          git add -f diag-output.txt; git commit -m diag || echo none
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/Tomrinrin/stride.git"
+          git push origin HEAD:main || echo pushfail
