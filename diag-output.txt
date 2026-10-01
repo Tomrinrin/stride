@@ -29,7 +29,7 @@ ROOT FTP = /public_html
     drwxr-xr-x   2 u251889010 o1009513274     4096 Jun 22 16:47 merci
     drwxr-xr-x   2 u251889010 o1009513274     4096 Jun 22 16:47 message-envoye
     -rw-r--r--   1 u251889010 o1009513274    26130 Jun 22 15:12 og-image.png
-    drwxr-xr-x  13 u251889010 o1009513274     4096 Oct  1 12:27 public_html
+    drwxr-xr-x  13 u251889010 o1009513274     4096 Oct  1 12:31 public_html
     drwxr-xr-x   2 u251889010 o1009513274     4096 Jun 22 16:47 quiz
 ### LIST /htdocs ERR 450 /htdocs: No such file or directory
 ### LIST /domains
@@ -41,29 +41,30 @@ ROOT FTP = /public_html
     drwxr-xr-x   3 u251889010 o1009513274     4096 Jun 16 16:35 ..
     drwxr-xr-x   3 u251889010 o1009513274     4096 Jun 18 19:43 .builds
     -rw-r--r--   1 u251889010 o1009513274        0 Jun 16 16:35 DO_NOT_UPLOAD_HERE
-    drwxr-xr-x  13 u251889010 o1009513274     4096 Jul 19 15:18 public_html
+    drwxr-xr-x  13 u251889010 o1009513274     4096 Oct  1 12:35 public_html
 ### LIST /domains/mapairederunning.fr/public_html
-    drwxr-xr-x  13 u251889010 o1009513274     4096 Jul 19 15:18 .
+    drwxr-xr-x  13 u251889010 o1009513274     4096 Oct  1 12:35 .
     drwxr-xr-x   4 u251889010 o1009513274     4096 Jul 19 15:18 ..
-    -rw-r--r--   1 u251889010 o1009513274     5901 Jul 19 15:18 apple-touch-icon.png
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 a-propos
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 _astro
-    drwxr-xr-x  38 u251889010 o1009513274     4096 Jul 19 15:18 chaussures
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 comparateur
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 contact
-    -rw-r--r--   1 u251889010 o1009513274     3884 Jul 19 15:18 favicon.ico
-    -rw-r--r--   1 u251889010 o1009513274      380 Jul 19 15:18 favicon.svg
-    drwxr-xr-x   4 u251889010 o1009513274     4096 Jul 19 15:18 guides
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 images
-    -rw-r--r--   1 u251889010 o1009513274    45905 Jul 19 15:18 index.html
-    drwxr-xr-x   8 u251889010 o1009513274     4096 Jul 19 15:18 magazine
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 merci
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 message-envoye
-    -rw-r--r--   1 u251889010 o1009513274    26130 Jul 19 15:18 og-image.png
-    drwxr-xr-x   2 u251889010 o1009513274     4096 Jul 19 15:18 quiz
+    -rw-r--r--   1 u251889010 o1009513274     5901 Oct  1 12:34 apple-touch-icon.png
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:34 a-propos
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:34 _astro
+    drwxr-xr-x  38 u251889010 o1009513274     4096 Oct  1 12:34 chaussures
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:35 comparateur
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:35 contact
+    -rw-r--r--   1 u251889010 o1009513274    20585 Oct  1 12:35 deploy-v6.json
+    -rw-r--r--   1 u251889010 o1009513274     3884 Oct  1 12:35 favicon.ico
+    -rw-r--r--   1 u251889010 o1009513274      380 Oct  1 12:35 favicon.svg
+    drwxr-xr-x   4 u251889010 o1009513274     4096 Oct  1 12:35 guides
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:35 images
+    -rw-r--r--   1 u251889010 o1009513274    46079 Oct  1 12:35 index.html
+    drwxr-xr-x   8 u251889010 o1009513274     4096 Oct  1 12:35 magazine
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:35 merci
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:35 message-envoye
+    -rw-r--r--   1 u251889010 o1009513274    26130 Oct  1 12:35 og-image.png
+    drwxr-xr-x   2 u251889010 o1009513274     4096 Oct  1 12:35 quiz
 ### LIST /domains/mapairederunning.fr/private_html ERR 450 /domains/mapairederunning.fr/private_html: No such file or directory
 ### index.html check
     /public_html/index.html -> ('nolink', 23427)
-    /domains/mapairederunning.fr/public_html/index.html -> ('nolink', 45829)
+    /domains/mapairederunning.fr/public_html/index.html -> ('nolink', 46003)
     /htdocs/index.html -> ('ERR', '550 /htdocs/index.html: No such file or ')
 __END__
